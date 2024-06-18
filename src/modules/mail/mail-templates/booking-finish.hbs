@@ -1,0 +1,106 @@
+<html lang='en'>
+
+    <head>
+        <meta charset='UTF-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=' />
+        <title>{{title}}</title>
+    </head>
+
+    <body style='margin:0;font-family:arial'>
+        <table style='border:0;width:100%'>
+            <tr style='background:#17A2B8'>
+                <td style='padding:20px;color:#ffffff;text-align:center;font-size:40px;font-weight:600'>
+                    {{app_name}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table
+                        align='center'
+                        border='0'
+                        cellpadding='0'
+                        cellspacing='0'
+                        role='presentation'
+                        style='width:100%;margin: 0px 0px 20px 0px;'
+                    >
+                        <tbody>
+                            <tr>
+                                <td align='left' style='padding:20px 0px 0px 20px;'><strong>-
+                                        {{currency_code}}
+                                        {{total_price}}</strong></td>
+                                <td align='right' style='padding:20px 0px 0px 20px;'><strong>Order ID:
+                                        {{order_id}}</strong></td>
+                            </tr>
+                            <tr>
+                                <td align='left' style='padding:0px 0px 0px 20px;'>{{formatted_current_date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td
+                    style='padding:20px;background:#4CAF50;color:#FFFFFF;text-align:center;font-size:20px;font-weight:600'
+                >
+                    {{mail_transaction_status}}
+                </td>
+            </tr>
+            <tr>
+                <td style='padding:10px;color:#808080;font-size:18px;font-weight:100;text-align:left;'>
+                    <strong>Dear {{mail_account_name}}</strong><br />
+                </td>
+            </tr>
+            <tr>
+                <td style='padding:10px;color:#808080;font-size:14px;font-weight:100;text-align:left;'>
+                    {{text1}}
+                    <br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table
+                        align='center'
+                        border='0'
+                        cellpadding='0'
+                        cellspacing='0'
+                        role='presentation'
+                        style='width:100%;margin: 0px 0px 20px 0px;border-collapse: collapse;'
+                    >
+                        <theader>
+                            <tr>
+                                <td align='left' style='padding:20px 0px 0px 20px;'><strong>Item</strong></td>
+                                <td align='right' style='padding:20px 0px 0px 20px;'><strong>Harga</strong></td>
+                            </tr>
+                        </theader>
+                        <tbody style='border-bottom: 1px solid black;'>
+                            <tr>
+                                <td align='left' style='padding:5px 0px 0px 20px;'>
+                                    {{hotel_name}}</td>
+                                <td align='right' style='padding:5px 0px 0px 20px;'>{{currency_code}}
+                                    {{room_type_price}}
+
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfooter>
+                            <tr>
+                                <td align='left' style='padding:10px 0px 0px 20px;'><strong>Total</strong></td>
+                                <td align='right' style='padding:10px 0px 0px 20px;'><strong>{{currency_code}}
+                                        {{total_price}}</strong></td>
+                            </tr>
+                        </tfooter>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style='text-align:center'>
+                    <span style='font-size:24px;font-weight:bold;;padding:20px;color:#555555'>
+                        Lets connect with us!
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </body>
+
+</html>

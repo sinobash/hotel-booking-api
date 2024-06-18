@@ -1,0 +1,16 @@
+export const validCapabilityKeys = [
+    'user',
+    'role',
+    'facility',
+    'feature',
+    'country',
+    'currency',
+    'city',
+    'banner',
+    'category',
+    'hotel',
+    'roomtype',
+    'room',
+    'guest',
+    'booking',
+];
