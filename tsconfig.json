@@ -3,6 +3,7 @@
         "outDir": "./dist",
         "rootDirs": ["./src", "./test"],
         "baseUrl": "./",
+        "ignoreDeprecations": "6.0",
         "paths": {
             "@common/*": ["src/common/*"],
             "@infrastructure/*": ["src/infrastructure/*"],
