@@ -16,8 +16,6 @@ import {
 } from '@nestjs/common';
 import { JwtAuthGuard } from '@modules/auth/guards/jwt-auth.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Express } from 'express';
-import { Multer } from 'multer';
 import { FilesService } from './files.service';
 import { CRUD_MESSAGES, UPLOAD_GROUP } from '@common/constants/app.constants';
 import { ImageFileDTO } from './dto/upload-file.dto';

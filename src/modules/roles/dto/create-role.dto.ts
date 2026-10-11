@@ -1,8 +1,7 @@
 import { upperCaseTransformer } from '@common/transformers/upper-case.transformer';
 import { IsNotExist } from '@common/validators/is-not-exists.validator';
-import { Transform, Type } from 'class-transformer';
-import { IsEnum, IsNotEmpty, IsOptional, MinLength, Validate, ValidateNested } from 'class-validator';
-import { CapabilityProperties } from '../interfaces/capability-properties.interface';
+import { Transform } from 'class-transformer';
+import { IsEnum, IsNotEmpty, IsOptional, MinLength, Validate } from 'class-validator';
 import { Actions } from '../enums/actions.enum';
 
 export class CreateRoleDto {

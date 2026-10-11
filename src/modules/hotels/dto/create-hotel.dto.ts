@@ -1,8 +1,7 @@
 import { upperCaseTransformer } from '@common/transformers/upper-case.transformer';
 import { IsNotExist } from '@common/validators/is-not-exists.validator';
 import { Transform } from 'class-transformer';
-import { IsEnum, IsNotEmpty, IsOptional, MinLength, Validate } from 'class-validator';
-import { HotelCategoryType } from '../../../common/enums/category.enum';
+import { IsNotEmpty, IsOptional, MinLength, Validate } from 'class-validator';
 
 export class CreateHotelDto {
     @MinLength(2)

@@ -1,4 +1,4 @@
-import { BadRequestException, Module, ValidationPipe } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import appConfig from '@infrastructure/config/app.config';
 import logConfig from '@infrastructure/config/log.config';
@@ -18,7 +18,7 @@ import { CacheModule } from '@nestjs/cache-manager';
 import { redisStore } from 'cache-manager-ioredis-yet';
 import { IsExist } from '@common/validators/is-exists.validator';
 import { IsNotExist } from '@common/validators/is-not-exists.validator';
-import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE, RouterModule } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, RouterModule } from '@nestjs/core';
 import { AllExceptionsFilter } from '@common/filters/all-exception.filter';
 import { ReponseTransformInterceptor } from '@common/interceptors/reponse-transform.interceptor';
 import { AuthModule } from '@modules/auth/auth.module';

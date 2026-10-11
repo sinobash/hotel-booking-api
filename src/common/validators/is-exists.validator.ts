@@ -3,12 +3,6 @@ import { InjectDataSource } from '@nestjs/typeorm';
 import { ValidatorConstraint, ValidatorConstraintInterface, ValidationArguments } from 'class-validator';
 import { DataSource } from 'typeorm';
 
-type ValidationEntity =
-    | {
-          id?: number | string;
-      }
-    | undefined;
-
 @Injectable()
 @ValidatorConstraint({ name: 'IsExist', async: true })
 export class IsExist implements ValidatorConstraintInterface {

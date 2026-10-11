@@ -5,7 +5,6 @@ import { HotelFacilities } from './hotel-facilities.entity';
 import { HotelMedia } from './hotel-medias.entity';
 import { RoomType } from '@modules/roomtypes/entities/roomtype.entity';
 import { Booking } from '@modules/bookings/entities/booking.entity';
-import { HotelCategoryType } from '@common/enums/category.enum';
 import { Category } from '@modules/categories/entities/category.entity';
 
 @Entity({

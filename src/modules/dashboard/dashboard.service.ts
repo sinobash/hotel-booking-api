@@ -8,8 +8,7 @@ import {
     SearchOccupiedRoomResDto,
     SearchRoomTypesResDto,
 } from '@modules/bookings/dto/search-room.dto.';
-import { Injectable, Logger } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { Injectable } from '@nestjs/common';
 import { DateTime } from 'luxon';
 
 @Injectable()

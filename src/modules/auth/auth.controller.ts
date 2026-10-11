@@ -1,4 +1,4 @@
-import { Controller, Post, HttpCode, HttpStatus, Body, Version } from '@nestjs/common';
+import { Controller, Post, HttpCode, HttpStatus, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
     CheckEmailDto,

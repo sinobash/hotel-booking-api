@@ -3,13 +3,7 @@ import { AppModule } from './app.module';
 import { useContainer } from 'class-validator';
 import { ConfigService } from '@nestjs/config';
 import helmet from 'helmet';
-import {
-    BadRequestException,
-    ClassSerializerInterceptor,
-    VERSION_NEUTRAL,
-    ValidationPipe,
-    VersioningType,
-} from '@nestjs/common';
+import { ClassSerializerInterceptor, VERSION_NEUTRAL, ValidationPipe, VersioningType } from '@nestjs/common';
 import validationOptions from '@common/utils/validation-options';
 import * as winston from 'winston';
 import { utilities as nestWinstonModuleUtilities, WinstonModule } from 'nest-winston';
