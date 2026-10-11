@@ -1,6 +1,6 @@
 import { compare, genSalt, hash } from 'bcryptjs';
 import CryptoJS from 'crypto-js';
-import { nanoid } from 'nanoid';
+import { randomUUID } from 'node:crypto';
 
 /**
  * @description: Bcrypt hashing
@@ -58,5 +58,5 @@ export const md5 = (msg: string): string => {
  * @return {*}
  */
 export const generateUUID = (): string => {
-    return nanoid();
+    return randomUUID();
 };

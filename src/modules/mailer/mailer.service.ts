@@ -11,51 +11,31 @@ export class MailerService {
     constructor(private readonly configService: ConfigService) {
         if (this.configService.get<string>('app.nodeEnv') === 'development') {
             this.transporter = nodemailer.createTransport({
-                host: this.configService.get('mail.host', {
-                    infer: true,
-                }),
-                service: this.configService.get('mail.mailer', {
-                    infer: true,
-                }),
-                port: this.configService.get('mail.port', {
-                    infer: true,
-                }),
+                host: this.configService.get('mail.host'),
+                service: this.configService.get('mail.mailer'),
+                port: this.configService.get('mail.port'),
                 auth: {
-                    user: this.configService.get('mail.user', {
-                        infer: true,
-                    }),
-                    pass: this.configService.get('mail.password', {
-                        infer: true,
-                    }),
+                    user: this.configService.get('mail.user'),
+                    pass: this.configService.get('mail.password'),
                 },
-                secure: this.configService.get('mail.secure', { infer: true }),
-                requireTLS: this.configService.get('mail.requireTLS', { infer: true }),
+                secure: this.configService.get('mail.secure'),
+                requireTLS: this.configService.get('mail.requireTLS'),
                 tls: {
                     rejectUnauthorized: false,
                 },
             });
         } else {
             this.transporter = nodemailer.createTransport({
-                host: this.configService.get('mail.host', {
-                    infer: true,
-                }),
-                service: this.configService.get('mail.mailer', {
-                    infer: true,
-                }),
-                port: this.configService.get('mail.port', {
-                    infer: true,
-                }),
+                host: this.configService.get('mail.host'),
+                service: this.configService.get('mail.mailer'),
+                port: this.configService.get('mail.port'),
                 auth: {
-                    user: this.configService.get('mail.user', {
-                        infer: true,
-                    }),
-                    pass: this.configService.get('mail.password', {
-                        infer: true,
-                    }),
+                    user: this.configService.get('mail.user'),
+                    pass: this.configService.get('mail.password'),
                 },
-                // ignoreTLS: this.configService.get('mail.ignoreTLS', { infer: true }),
-                secure: this.configService.get('mail.secure', { infer: true }),
-                requireTLS: this.configService.get('mail.requireTLS', { infer: true }),
+                // ignoreTLS: this.configService.get('mail.ignoreTLS'),
+                secure: this.configService.get('mail.secure'),
+                requireTLS: this.configService.get('mail.requireTLS'),
                 tls: {
                     rejectUnauthorized: true,
                 },

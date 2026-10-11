@@ -39,7 +39,10 @@ export class NotificationsGateway implements OnGatewayInit, OnGatewayConnection,
     private clients: Socket[] = [];
     private roomParticipants: Map<string, Socket[]> = new Map();
 
-    constructor(private readonly configService: ConfigService, private readonly websocketService: WebsocketService) {}
+    constructor(
+        private readonly configService: ConfigService,
+        private readonly websocketService: WebsocketService,
+    ) {}
 
     afterInit(server: SocketIOServer) {
         this.logger.log('Notification Gateway Initialized');

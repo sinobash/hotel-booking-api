@@ -3,7 +3,6 @@ import { Observable, map } from 'rxjs';
 import { Request } from 'express';
 import { AdminUserData } from '@common/interfaces/admin-user-data.interface';
 import { RoleEnum } from '@modules/roles/enums/roles.enum';
-import _ from 'lodash';
 import { FORBIDDEN_MESSAGES } from '@common/constants/app.constants';
 import { RoomType } from '@modules/roomtypes/entities/roomtype.entity';
 
@@ -11,7 +10,7 @@ import { RoomType } from '@modules/roomtypes/entities/roomtype.entity';
 export class ValidateBodyInterceptor implements NestInterceptor {
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
         const request = context.switchToHttp().getRequest<Request & { user: AdminUserData }>();
-        if (!_.isEmpty(request.body)) {
+        if (Object.keys(request.body ?? {}).length > 0) {
             if (request.body.hotelId) {
                 if (request.user.urole !== RoleEnum.ADMIN && request.user.ubranch !== Number(request.body.hotelId)) {
                     throw new UnauthorizedException(FORBIDDEN_MESSAGES.FORBIDDEN_BRANCH_ACCESS);

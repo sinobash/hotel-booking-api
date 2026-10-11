@@ -1,3 +1,4 @@
+import type { StringValue } from 'ms';
 import { GuestsService } from '@modules/guests/guests.service';
 import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
@@ -235,7 +236,7 @@ export class AuthService {
     }
 
     private async getTokensData(data: { guest: Pick<Guest, 'id' | 'username'> }) {
-        const tokenExpiresIn = this.configService.get<string>('jwt.expires');
+        const tokenExpiresIn = this.configService.get<StringValue>('jwt.expires');
         const [accessToken] = await Promise.all([
             await this.jwtService.signAsync(
                 {

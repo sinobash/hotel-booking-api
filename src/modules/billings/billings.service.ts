@@ -1,3 +1,4 @@
+import { setTimeout } from 'node:timers/promises';
 import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { In, Repository } from 'typeorm';
@@ -145,14 +146,12 @@ export class BillingsService {
 
         if (result.affected > 0) {
             // Cancel the payment intent from stripe
-            const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
             (async () => {
                 for (let i = 0; i < result.affected; i++) {
                     this.logger.debug('billing paymentId', result.raw[i]['payment_id']);
                     const cancelPayment = await this.stripeService.cancelPayment(result.raw[i]['payment_id']);
                     this.logger.debug('cancel payment ID', cancelPayment.id);
-                    await sleep(2000);
+                    await setTimeout(2000);
                 }
                 this.logger.debug(`PaymentIntents cancellation is done at ${new Date()}`);
             })();

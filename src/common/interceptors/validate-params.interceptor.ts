@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 import { Request } from 'express';
 import { AdminUserData } from '@common/interfaces/admin-user-data.interface';
 import { RoleEnum } from '@modules/roles/enums/roles.enum';
-import _ from 'lodash';
 import { FORBIDDEN_MESSAGES } from '@common/constants/app.constants';
 import { HotelsService } from '@modules/hotels/hotels.service';
 import { RoomTypesService } from '@modules/roomtypes/roomtypes.service';
@@ -18,11 +17,14 @@ import { ApiException } from '@common/exceptions/api.exception';
 
 @Injectable()
 export class ValidateParamsInterceptor implements NestInterceptor {
-    constructor(private readonly hotelsService: HotelsService, private readonly roomTypesService: RoomTypesService) {}
+    constructor(
+        private readonly hotelsService: HotelsService,
+        private readonly roomTypesService: RoomTypesService,
+    ) {}
 
     intercept(context: ExecutionContext, next: CallHandler<any>): Observable<any> | Promise<Observable<any>> {
         const request = context.switchToHttp().getRequest<Request & { user: AdminUserData }>();
-        if (!_.isEmpty(request.params)) {
+        if (Object.keys(request.params ?? {}).length > 0) {
             this.validateAccess(request);
         }
         return next.handle();

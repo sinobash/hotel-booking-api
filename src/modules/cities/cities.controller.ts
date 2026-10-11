@@ -34,7 +34,7 @@ export class CitiesController {
     constructor(private readonly citiesService: CitiesService) {}
 
     @UseInterceptors(CacheInterceptor)
-    @CacheTTL(60)
+    @CacheTTL(60_000)
     @Get()
     @HttpCode(HttpStatus.OK)
     async findAll(@Query() pageOptionsDto: PageOptionsDto): Promise<PageDto<City>> {

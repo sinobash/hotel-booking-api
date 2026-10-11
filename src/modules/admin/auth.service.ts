@@ -1,3 +1,4 @@
+import type { StringValue } from 'ms';
 import { AUTH_MESSAGES } from '@common/constants/app.constants';
 import { doCompare } from '@common/utils/crypt.helper';
 import { UsersService } from '@modules/users/users.service';
@@ -62,7 +63,7 @@ export class AuthService {
     }
 
     private async getTokensData(data: { user: Pick<User, 'id' | 'username' | 'hotel'>; role: User['role'] }) {
-        const tokenExpiresIn = this.configService.get<string>('jwt.expires');
+        const tokenExpiresIn = this.configService.get<StringValue>('jwt.expires');
         let branch = 0;
         let branch_code = 'HQ';
         // if user is not assigned to specific hotel then set branch code to HQ

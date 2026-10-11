@@ -1,5 +1,9 @@
 export abstract class AbstractError extends Error {
-    constructor(public statusCode: number, public message: string, public code: number) {
+    constructor(
+        public statusCode: number,
+        public message: string,
+        public code: number,
+    ) {
         super(message);
         this.statusCode = statusCode;
         this.name = this.constructor.name;

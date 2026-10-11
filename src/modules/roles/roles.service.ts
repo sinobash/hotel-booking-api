@@ -7,7 +7,6 @@ import { Repository } from 'typeorm';
 import { EntityCondition } from '@common/types/entity-condition.type';
 import { NullableType } from '@common/types/nullable.type';
 import { RolePermissionsResDto } from './dto/role-permissions.dto';
-import _ from 'lodash';
 import { validCapabilityKeys } from '@common/constants/role.constants';
 import { checkObjectKeys } from '@common/utils/app.helper';
 import AppError from '@common/errors/app.error';

@@ -4,7 +4,7 @@ import { AdminUserData } from '@common/interfaces/admin-user-data.interface';
 import { RoleEnum } from '@modules/roles/enums/roles.enum';
 import { HttpStatus } from '@nestjs/common';
 import { Request } from 'express';
-import { customAlphabet } from 'nanoid';
+import { randomInt } from 'node:crypto';
 
 /* Get request IP */
 export const getReqIP = (req: Request): string => {
@@ -46,12 +46,14 @@ export const IsLAN = (ip: string): any => {
  * @param {*} placeholder
  * @return {*}
  */
+const randomFrom = (alphabet: string, length: number): string =>
+    Array.from({ length }, () => alphabet[randomInt(alphabet.length)]).join('');
+
 export const generateRandomValue = (
     length: number,
     placeholder = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
 ): string => {
-    const customNanoid = customAlphabet(placeholder, length);
-    return customNanoid();
+    return randomFrom(placeholder, length);
 };
 
 /**
@@ -61,8 +63,7 @@ export const generateRandomValue = (
  * @return {*}
  */
 export const generateRandomNumber = (length: number, placeholder = '0123456789'): string => {
-    const customNanoid = customAlphabet(placeholder, length);
-    return customNanoid();
+    return randomFrom(placeholder, length);
 };
 
 /**

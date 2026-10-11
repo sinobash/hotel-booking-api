@@ -2,7 +2,7 @@ import { MailerService } from '@modules/mailer/mailer.service';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { MailData } from './interfaces/mail-data.interface';
-import path from 'path';
+import path from 'node:path';
 import {
     REGISTER_VERIFY_TEMPLATES,
     EMAIL_TEMPLATES,
@@ -13,7 +13,10 @@ import {
 
 @Injectable()
 export class MailService {
-    constructor(private readonly configService: ConfigService, private readonly mailerService: MailerService) {}
+    constructor(
+        private readonly configService: ConfigService,
+        private readonly mailerService: MailerService,
+    ) {}
 
     async registerVerification(mailData: MailData<{ code: string }>): Promise<any> {
         const accountRegisterTitle = EMAIL_TEMPLATES.REGISTER_VERIFY_TEXT;
@@ -30,9 +33,7 @@ export class MailService {
             subject: accountRegisterTitle,
             text: `Your OTP Code: ${mailData.data.code}`,
             templatePath: path.join(
-                this.configService.getOrThrow('app.workingDirectory', {
-                    infer: true,
-                }),
+                this.configService.getOrThrow('app.workingDirectory'),
                 'src/modules',
                 'mail',
                 'mail-templates',
@@ -67,9 +68,7 @@ export class MailService {
             subject: accountRegisterTitle,
             text: `Registration Complete for  ${mailData.data.fullName}`,
             templatePath: path.join(
-                this.configService.getOrThrow('app.workingDirectory', {
-                    infer: true,
-                }),
+                this.configService.getOrThrow('app.workingDirectory'),
                 'src/modules',
                 'mail',
                 'mail-templates',
@@ -111,9 +110,7 @@ export class MailService {
             subject: bookingCompleteTitle,
             text: `Payment Process is Success for Booking Order ID #${mailData.data.code}`,
             templatePath: path.join(
-                this.configService.getOrThrow('app.workingDirectory', {
-                    infer: true,
-                }),
+                this.configService.getOrThrow('app.workingDirectory'),
                 'src/modules',
                 'mail',
                 'mail-templates',
@@ -156,9 +153,7 @@ export class MailService {
             subject: bookingCompleteTitle,
             text: `Payment Process is Success for Booking Order ID #${mailData.data.code}`,
             templatePath: path.join(
-                this.configService.getOrThrow('app.workingDirectory', {
-                    infer: true,
-                }),
+                this.configService.getOrThrow('app.workingDirectory'),
                 'src/modules',
                 'mail',
                 'mail-templates',
@@ -199,9 +194,7 @@ export class MailService {
             subject: bookingCancelTitle,
             text: `Unsuccessful Payment Process for Booking Order ID #${mailData.data.code}`,
             templatePath: path.join(
-                this.configService.getOrThrow('app.workingDirectory', {
-                    infer: true,
-                }),
+                this.configService.getOrThrow('app.workingDirectory'),
                 'src/modules',
                 'mail',
                 'mail-templates',

@@ -85,11 +85,13 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
             verboseMemoryLeak: false,
         }),
 
-        /* Import the rate limit module ttl: in seconds, Indicates that only limit requests can be made within ttl seconds to avoid brute force attacks. */
-        ThrottlerModule.forRoot({
-            ttl: 60,
-            limit: 60,
-        }),
+        /* Import the rate limit module ttl: in milliseconds, Indicates that only limit requests can be made within ttl to avoid brute force attacks. */
+        ThrottlerModule.forRoot([
+            {
+                ttl: 60_000,
+                limit: 60,
+            },
+        ]),
 
         /* Connecting to cache wrapping redis */
         CacheModule.registerAsync({
@@ -101,7 +103,7 @@ import { EventEmitterModule } from '@nestjs/event-emitter';
                     port: configService.get<number>('redis.port'),
                     password: configService.get<string>('redis.password') || null,
                 }),
-                ttl: 30,
+                ttl: 30_000,
             }),
             inject: [ConfigService],
         }),

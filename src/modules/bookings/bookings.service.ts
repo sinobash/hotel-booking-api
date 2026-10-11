@@ -1,3 +1,4 @@
+import type { StringValue } from 'ms';
 import { HttpStatus, Injectable, Logger } from '@nestjs/common';
 import { CreateBookingReqDto, CreateBookingResDto } from './dto/create-booking.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -1241,7 +1242,7 @@ export class BookingsService {
             );
         }
         const room = await this.roomsService.findOne({ id: bookedRoom.room.id });
-        const tokenExpiresIn = this.configService.get<string>('jwt.qrExpires');
+        const tokenExpiresIn = this.configService.get<StringValue>('jwt.qrExpires');
 
         const qrData = {
             key: data.booking.id,

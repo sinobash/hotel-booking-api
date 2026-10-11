@@ -25,7 +25,10 @@ export class AdminBookingsController {
     /**
      * @ignore
      */
-    constructor(private readonly bookingsService: BookingsService, private readonly stripeService: StripeService) {}
+    constructor(
+        private readonly bookingsService: BookingsService,
+        private readonly stripeService: StripeService,
+    ) {}
 
     @HasPermissions(Permission.ReadBooking)
     @Post('/search')
